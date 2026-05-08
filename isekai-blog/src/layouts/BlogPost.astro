@@ -1,0 +1,255 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+
+
+
+const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,youtubeTrack} = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			main {
+				width: calc(100% - 2em);
+				max-width: 100%;
+				margin: 0;
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: rgb(var(--gray-dark));
+				
+			}
+			.title {
+				margin-bottom:1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1.3;
+				white-space: pre-line;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: rgb(var(--gray));
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
+
+	
+
+	<body>
+		<Header />
+		<main>
+			<article>
+				<div class="hero-image">
+					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+				</div>
+				<div class="prose">
+				
+					<div class="title">
+						<div class="date">
+							<FormattedDate date={pubDate} />
+							{
+								updatedDate && (
+									<div class="last-updated-on">
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+						<h1>
+						{subtitle1 && <span class="line">{subtitle1}</span>}  
+						<span class="main">{title}</span>
+						  {subtitle2 && <span class="line">{subtitle2}</span>}
+						</h1>
+						<hr />
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+		<Footer />
+{
+		youtubeTrack && (<div id="player">
+  <div id="track"></div>
+</div>
+		)
+}
+ 
+<script define:vars={{ youtubeTrack }} is:inline>
+if (!youtubeTrack) return;
+let currentTrack = "";
+
+window.onYouTubeIframeAPIReady = () => {
+
+  player = new YT.Player("track", {
+
+    width: "300",
+
+    height: "170",
+
+    videoId: youtubeTrack,
+
+    playerVars: {
+      playsinline: 1,
+	  controls: 0,
+  modestbranding: 1,
+  rel: 0
+    },
+
+    events: {
+      onReady: (event) => {
+
+        console.log("player ready");
+
+        event.target.unMute();
+
+        event.target.setVolume(50);
+
+		const sections =
+  document.querySelectorAll(
+    "section[data-track]"
+  );
+
+  console.log(
+  "sections:",
+  sections.length
+);
+
+const observer =
+  new IntersectionObserver(
+
+    (entries) => {
+
+      entries.forEach((entry) => {
+
+        if (!entry.isIntersecting)
+          return;
+
+        const trackId =
+          entry.target.dataset.track;
+
+        const start =
+  entry.target.dataset.start
+    ? Number(entry.target.dataset.start)
+    : 0;
+
+       if (trackId === currentTrack)
+  return;
+
+currentTrack = trackId;
+
+fadeToTrack(trackId,start);
+
+      });
+
+    },
+
+    {
+      threshold: 0.6
+    }
+
+  );
+
+sections.forEach((section) => {
+  observer.observe(section);
+});
+      }
+	  
+    }
+  });
+
+};
+
+const tag = document.createElement("script");
+
+tag.src =
+  "https://www.youtube.com/iframe_api";
+
+document.body.appendChild(tag);
+function fadeToTrack(trackId,startSeconds) {
+
+  let volume =
+    player.getVolume();
+
+  const fadeOut =
+    setInterval(() => {
+
+      volume -= 10;
+
+      player.setVolume(
+        volume
+      );
+
+      if (volume <= 0) {
+
+        clearInterval(
+          fadeOut
+        );
+
+        player.loadVideoById({
+          videoId: trackId,
+  startSeconds: startSeconds
+	  });
+
+        fadeIn();
+
+      }
+
+    }, 80);
+
+}
+
+
+function fadeIn() {
+
+  let volume = 0;
+
+  player.setVolume(0);
+
+  const fadeIn =
+    setInterval(() => {
+
+      volume += 10;
+
+      player.setVolume(
+        volume
+      );
+
+      if (volume >= 50) {
+
+        clearInterval(
+          fadeIn
+        );
+
+      }
+
+    }, 80);
+
+}
+</script>
+	</body>
+</html>

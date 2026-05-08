@@ -1,0 +1,26 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<h1>おはー</h1>
+			<p>
+				ここはびっくり箱、オルゴール、アルバム、学習用ノート、覚書、ゴミ捨て場、ロバの耳の真実を知った大穴、etc。
+			<p>
+				散らかった自分の部屋見られてるみたいで、なんか恥ずいね。
+			</p>
+			
+		</main>
+		<Footer />
+	</body>
+</html>
