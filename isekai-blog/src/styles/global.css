@@ -45,6 +45,7 @@ body {
 	padding: 0;
 	text-align: left;
 	background: var(--bg);
+	overflow-x: hidden;
 	
 	word-wrap: break-word;
 	overflow-wrap: break-word;
@@ -56,9 +57,9 @@ body {
 }
 
 main {
-	width: 720px;
+	width: 100%;
 	max-width: calc(100% - 2em);
-	margin: auto;
+	margin: 0 auto;
 	padding: 3em 1em;
 }
 h1,
@@ -152,11 +153,17 @@ hr {
 }
 @media (max-width: 720px) {
 	body {
-		font-size: 18px;
+		font-size: 16px;
 	}
 	main {
 		padding: 1em;
 	}
+	h1 {
+    font-size: 2rem;
+  }
+  .line {
+    font-size: 2rem;
+  }
 }
 
 .sr-only {
