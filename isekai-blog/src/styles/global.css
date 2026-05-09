@@ -159,10 +159,10 @@ hr {
 		padding: 1em;
 	}
 	h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
   .line {
-    font-size: 1em;
+    font-size: 0.9rem;
   }
 
    iframe {
@@ -171,14 +171,13 @@ hr {
     height: auto;
   }
 
-  @media (max-width: 480px) {
   #player {
     display: none;
   }
 }
 
 
-}
+
 
 .sr-only {
 	border: 0;
