@@ -155,12 +155,13 @@ hr {
 	body {
 		font-size: 16px;
 	}
-	main {
-		padding: 1em;
-	}
+	
+	
 	h1 {
     font-size: 1.8rem;
   }
+  
+ .main,
   .line {
     font-size: 0.9rem;
   }
@@ -199,6 +200,7 @@ hr {
 .title {
   white-space: pre-line;
 }
+.main,
 .line {
   font-size: 3rem;
   font-weight: normal;

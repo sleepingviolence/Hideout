@@ -83,11 +83,11 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
 								)
 							}
 						</div>
-						<h1>
-						{subtitle1 && <span class="line">{subtitle1}</span>}  
-						<span class="main">{title}</span>
-						  {subtitle2 && <span class="line">{subtitle2}</span>}
-						</h1>
+						<div class = "title">
+						{subtitle1 && <div class="line">{subtitle1}</div>}  
+						<h1 class="main">{title}</h1>
+						  {subtitle2 && <div class="line">{subtitle2}</div>}
+						</div>
 						<hr />
 					</div>
 					<slot />
