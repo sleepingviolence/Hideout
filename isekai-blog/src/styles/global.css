@@ -153,6 +153,12 @@ hr {
 	border: none;
 	border-top: 1px solid rgb(var(--gray-light));
 }
+
+.subtitle {
+  font-size: 3rem;
+  margin: 0.3em 0;
+}
+
 @media (max-width: 720px) {
 	body {
 		font-size: 16px;
@@ -203,10 +209,7 @@ hr {
   margin-bottom: 1.5em;
 }
 
-.subtitle {
-  font-size: 3rem;
-  margin: 0.3em 0;
-}
+
 
 #player {
   position: fixed;
