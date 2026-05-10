@@ -124,6 +124,10 @@ position: sticky;
   background: var(--header-text);
   color: var(--header-bg);
 }
+
+header.hide {
+    transform: translateY(-100%);
+  }
 	
 </style>
 <script is:inline>
@@ -162,5 +166,25 @@ position: sticky;
     });
 
     initTheme();
+  });
+</script>
+
+<script is:inline>
+  let lastY = window.scrollY;
+  const header = document.querySelector("header");
+
+  window.addEventListener("scroll", () => {
+
+    if (window.innerWidth > 720) return;
+
+    const currentY = window.scrollY;
+
+    if (currentY > lastY && currentY > 80) {
+      header?.classList.add("hide");
+    } else {
+      header?.classList.remove("hide");
+    }
+
+    lastY = currentY;
   });
 </script>
