@@ -32,6 +32,10 @@ import HeaderLink from './HeaderLink.astro';
 </header>
 <style>
 	header {
+position: sticky;
+  top: 0;
+  z-index: 1000;
+
 		margin: 0;
 		padding: 0 1em;
 		
@@ -73,10 +77,37 @@ import HeaderLink from './HeaderLink.astro';
 	.social-links a {
 		display: flex;
 	}
+
+	.internal-links {
+  display: flex;
+  gap: 0.5rem;
+}
 	@media (max-width: 720px) {
 		.social-links {
 			display: none;
 		}
+
+		nav {
+    padding: 0.4rem 0;
+  }
+
+  .internal-links {
+    font-size: 0.9rem;
+    gap: 0.2rem;
+  }
+
+  nav a {
+    padding: 0.5em 0.3em;
+  }
+
+  .theme-btn {
+    padding: 0.25em 0.5em;
+    font-size: 0.85rem;
+  }
+
+  .social-links {
+    display: none;
+  }
 	}
 
 	.theme-btn {
