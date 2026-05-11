@@ -119,6 +119,18 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
 </div>
 		)
 }
+</Footer />
+
+<script is:inline>
+  window.addEventListener("DOMContentLoaded", () => {
+    const toc = document.querySelector(".toc");
+
+    if (toc && window.innerWidth <= 720) {
+      toc.removeAttribute("open");
+    }
+  });
+</script>
+
  
 <script define:vars={{ youtubeTrack }} is:inline>
 if (!youtubeTrack) return;
