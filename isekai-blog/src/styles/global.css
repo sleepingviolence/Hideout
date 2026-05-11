@@ -179,6 +179,9 @@ hr {
     aspect-ratio: 16 / 9;
     height: auto;
   }
+  .layout {
+    display: block;
+  }
 
   #player {
     display: none;
