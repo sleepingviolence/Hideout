@@ -22,10 +22,10 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
 				 display: flex;
                  justify-content: center;
 				 max-width: 900px;
+				 margin: 0 auto;
 			}
 			.hero-image img {
-				width: 100%;
-                
+				width: 100%;                
                 height: auto;
 				display: block;
 				margin: 0 auto;
@@ -37,8 +37,8 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
   .hero-image img {
     width: 100%;
     height: auto;
-    max-height: 200px;
-    object-fit: cover;
+    max-height: none;
+    object-fit: unset;
     border-radius: 10px;
   }
 }
