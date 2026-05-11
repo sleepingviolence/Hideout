@@ -185,8 +185,8 @@ hr {
     height: auto;
   }
   .layout {
-	display: block;
-    grid-template-columns: 1fr;
+	display: flex;
+    flex-direction: column;
   }
 
   #player {
