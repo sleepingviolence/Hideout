@@ -186,6 +186,11 @@ hr {
   #player {
     display: none;
   }
+
+  .toc {
+    position: static;
+    margin: 1rem 0;
+  }
 }
 
 
@@ -279,6 +284,12 @@ hr {
   font-size: 0.85rem;
   padding-left: 2rem;
   opacity: 0.7;
+}
+
+.toc summary {
+  cursor: pointer;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
 
 .toc ul {

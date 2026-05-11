@@ -4,8 +4,8 @@ const { headings = [] } = Astro.props;
 
 {
   headings?.length > 0 && (
-    <aside class="toc">
-      <p>目次</p>
+    <details class="toc" open>
+      <summary>目次</summary>
 
       <ul>
         {
@@ -18,6 +18,6 @@ const { headings = [] } = Astro.props;
           ))
         }
       </ul>
-    </aside>
+    </details>
   )
 }

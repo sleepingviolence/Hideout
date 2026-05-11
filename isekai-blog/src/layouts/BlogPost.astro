@@ -18,16 +18,30 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
 		<style>
 			
 			.hero-image {
-				width: 100%;
+				 width: 100%;
 				 display: flex;
                  justify-content: center;
+				 max-width: 900px;
 			}
 			.hero-image img {
+				width: 100%;
+                
+                height: auto;
 				display: block;
 				margin: 0 auto;
 				border-radius: 12px;
 				box-shadow: var(--box-shadow);
 			}
+
+			@media (max-width: 720px) {
+  .hero-image img {
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+}
 			
 			.title {
 				margin-bottom:1em;
