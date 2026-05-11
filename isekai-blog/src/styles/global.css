@@ -180,7 +180,7 @@ hr {
     height: auto;
   }
   .layout {
-    display: block;
+    grid-template-columns: 1fr;
   }
 
   #player {
