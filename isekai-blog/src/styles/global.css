@@ -189,7 +189,11 @@ hr {
 
   .toc {
     position: static;
+	width: 100%;
     margin: 1rem 0;
+  }
+  .content {
+    width: 100%;
   }
 }
 
