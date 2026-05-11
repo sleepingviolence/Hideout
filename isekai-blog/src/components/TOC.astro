@@ -1,0 +1,23 @@
+---
+const { headings = [] } = Astro.props;
+---
+
+{
+  headings?.length > 0 && (
+    <aside class="toc">
+      <p>目次</p>
+
+      <ul>
+        {
+          headings.map((heading) => (
+            <li class={`depth-${heading.depth}`}>
+              <a href={`#${heading.slug}`}>
+                {heading.text}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+  )
+}
