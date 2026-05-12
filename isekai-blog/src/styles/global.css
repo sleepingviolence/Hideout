@@ -208,14 +208,36 @@ hr {
 }
 
 .toc {
+  position: sticky;
+  top: 20px;
+
   margin-top: 1rem;
   background: var(--header-bg);
   box-shadow: var(--box-shadow);
   border-radius: 16px;
   padding: 1rem;
 
+  scrollbar-width: thin;
+
 }
 
+.toc-body {
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+
+   scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge */
+
+   mask-image: linear-gradient(
+    to bottom,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.toc-body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
 
 
 .toc a {
