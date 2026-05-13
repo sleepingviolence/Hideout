@@ -333,6 +333,15 @@ iframe {
     aspect-ratio: 16 / 9;
     height: auto;
   }
+
+  .title {
+    padding-top: 0.3rem;
+  }
+
+  .prose {
+    padding-top: 0;
+  }
+
   .layout {
 	display: flex;
     flex-direction: column;
@@ -345,7 +354,7 @@ iframe {
   .toc {
     position: static;
 	width: 100%;
-    margin: 1rem 0;
+    margin: 0.5rem 0 0 0;
   }
   .content {
     width: 100%;
