@@ -83,12 +83,15 @@ h2 {
 }
 h3 {
 	font-size: 1.953em;
+  scroll-margin-top: 90px;
 }
 h4 {
 	font-size: 1.563em;
+  scroll-margin-top: 90px;
 }
 h5 {
 	font-size: 1.25em;
+  scroll-margin-top: 90px;
 }
 strong,
 b {
@@ -209,7 +212,7 @@ hr {
 
 .toc {
   position: sticky;
-  top: 20px;
+  top: calc(var(--header-height) + 16px);
 
   margin-top: 1rem;
   background: var(--header-bg);
@@ -218,6 +221,9 @@ hr {
   padding: 1rem;
 
   scrollbar-width: thin;
+
+  grid-column: 1;
+  grid-row: 1;
 
 }
 
@@ -296,6 +302,8 @@ hr {
 
 .content {
   min-width: 0;
+  grid-column: 2;
+
 }
 
 iframe {
@@ -331,8 +339,7 @@ iframe {
     height: auto;
   }
   .layout {
-	display: flex;
-    flex-direction: column;
+	display: block;
   }
 
   #player {

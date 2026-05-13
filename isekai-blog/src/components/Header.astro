@@ -31,12 +31,21 @@ import HeaderLink from './HeaderLink.astro';
 	</nav>
 </header>
 <style>
+:root {
+  --header-height: 72px;
+}
+@media (max-width: 720px) {
+  :root {
+    --header-height: 56px;
+  }
+}
 	header {
 position: sticky;
   top: 0;
   z-index: 1000;
 
 		margin: 0;
+    height: var(--header-height);
 		padding: 0 1em;
 		
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
