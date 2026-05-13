@@ -222,9 +222,6 @@ hr {
 
   scrollbar-width: thin;
 
-  grid-column: 1;
-  grid-row: 1;
-
 }
 
 .toc-body {
@@ -302,8 +299,6 @@ hr {
 
 .content {
   min-width: 0;
-  grid-column: 2;
-
 }
 
 iframe {
@@ -340,7 +335,7 @@ iframe {
   }
   .layout {
 	display: flex;
-  flex-direction: column;
+    flex-direction: column;
   }
 
   #player {
@@ -351,14 +346,8 @@ iframe {
     position: static;
 	width: 100%;
     margin: 1rem 0;
-    order: 2;
-    grid-column: auto;
-    grid-row: auto;
   }
   .content {
     width: 100%;
-    order: 1;
-    grid-column: auto;
-    grid-row: auto;
   }
 }
