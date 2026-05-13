@@ -352,9 +352,15 @@ iframe {
   }
 
   .toc {
-    position: static;
-	width: 100%;
+    position: sticky;
+    top: calc(var(--header-height) + 16px);
+
+    z-index: 100;
+	  width: 100%;
     margin: 0.5rem 0 0 0;
+
+    max-height: none;
+    overflow: visible;
   }
   .content {
     width: 100%;

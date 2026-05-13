@@ -125,13 +125,33 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
 </Footer />
 
 <script is:inline>
-  window.addEventListener("DOMContentLoaded", () => {
-    const toc = document.querySelector(".toc");
+window.addEventListener("DOMContentLoaded", () => {
 
-    if (toc && window.innerWidth <= 720) {
-      toc.removeAttribute("open");
-    }
+  const toc = document.querySelector(".toc");
+
+  if (!toc) return;
+
+  // 初期状態
+  if (window.innerWidth <= 720) {
+    toc.removeAttribute("open");
+  } else {
+    toc.setAttribute("open", "");
+  }
+
+  // スマホだけタップ後閉じる
+  toc.querySelectorAll("a").forEach((link) => {
+
+    link.addEventListener("click", () => {
+
+      if (window.innerWidth <= 720) {
+        toc.removeAttribute("open");
+      }
+
+    });
+
   });
+
+});
 </script>
 
  
