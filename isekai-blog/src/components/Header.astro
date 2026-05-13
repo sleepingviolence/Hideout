@@ -5,7 +5,12 @@ import HeaderLink from './HeaderLink.astro';
 
 <header>
 	<nav>
-		<h2><a href="/">{SITE_TITLE}</a></h2>
+		<h2>
+      <a href="/" class="site-title">
+      <span class="pc-title">{SITE_TITLE}</span>
+      <span class="mobile-title">LoH</span>
+      </a>
+    </h2>
 		<div class="internal-links">
 			<HeaderLink href="/">ロビー</HeaderLink>
 			<HeaderLink href="/blog">備忘録</HeaderLink>
@@ -31,6 +36,21 @@ import HeaderLink from './HeaderLink.astro';
 	</nav>
 </header>
 <style>
+.mobile-title {
+  display: none;
+}
+
+@media (max-width: 720px) {
+
+  .pc-title {
+    display: none;
+  }
+
+  .mobile-title {
+    display: inline;
+  }
+
+}
 :root {
   --header-height: 72px;
 }
