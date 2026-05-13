@@ -235,6 +235,10 @@ hr {
   display: none;
 }
 
+.toc[open] summary::before {
+  content: "✕";
+}
+
 .toc summary::before {
   content: "☰";
 
