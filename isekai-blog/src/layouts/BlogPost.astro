@@ -284,6 +284,7 @@ window.addEventListener("DOMContentLoaded", () => {
 <script define:vars={{ youtubeTrack }} is:inline>
 if (!youtubeTrack) return;
 let currentTrack = "";
+let btn;
 
 
 
@@ -315,7 +316,7 @@ window.onYouTubeIframeAPIReady = () => {
     events: {
       onReady: (event) => {
 
-        const btn = document.getElementById("miniPlayBtn");
+        btn = document.getElementById("miniPlayBtn");
 
         updateUI();
 
