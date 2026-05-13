@@ -60,6 +60,65 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
 			.last-updated-on {
 				font-style: italic;
 			}
+
+      #player {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 999;
+
+   border-radius: 16px;
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(10px);
+
+}
+
+      .mini-player {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  background: var(--header-bg);
+  box-shadow: var(--box-shadow);
+  border-radius: 14px;
+
+  z-index: 1000;
+}
+
+.mini-btn {
+  width: 36px;
+  height: 36px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--accent);
+  color: white;
+}
+
+.mini-title {
+  font-size: 0.85rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 721px) {
+  .mini-player {
+    display: none;
+  }
+}
 		</style>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 	</head>
@@ -116,13 +175,22 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
 		  
 		</main>
 		<Footer />
-{
-		youtubeTrack && (<div id="player">
+{		
+  youtubeTrack && (<div id="player">
   <div id="track"></div>
 </div>
 		)
 }
-</Footer />
+
+{
+  youtubeTrack && (
+  <div id="miniPlayer" class="mini-player">
+    <button id="miniPlayBtn" class="mini-btn">▶</button>
+    <div id="miniTitle" class="mini-title">Now Playing</div>
+  </div>
+)}
+
+</Footer>
 
 <script is:inline>
 window.addEventListener("DOMContentLoaded", () => {
@@ -166,6 +234,10 @@ window.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(
       ".toc a"
     );
+  
+  
+
+    
 
   const observer =
     new IntersectionObserver(
@@ -210,6 +282,19 @@ window.addEventListener("DOMContentLoaded", () => {
 if (!youtubeTrack) return;
 let currentTrack = "";
 
+
+
+function syncPlayButton() {
+  if (!player || !btn) return;
+
+  const state = player.getPlayerState();
+
+  btn.textContent =
+    state === YT.PlayerState.PLAYING ? "⏸" : "▶";
+}
+
+ 
+
 window.onYouTubeIframeAPIReady = () => {
 
   player = new YT.Player("track", {
@@ -232,19 +317,19 @@ window.onYouTubeIframeAPIReady = () => {
 
         console.log("player ready");
 
+        syncPlayButton();
+
         event.target.unMute();
 
         event.target.setVolume(50);
+
+        const btn =
+  document.getElementById("miniPlayBtn");
 
 		const sections =
   document.querySelectorAll(
     "section[data-track]"
   );
-
-  console.log(
-  "sections:",
-  sections.length
-);
 
 const observer =
   new IntersectionObserver(
@@ -256,13 +341,14 @@ const observer =
         if (!entry.isIntersecting)
           return;
 
-        const trackId =
-          entry.target.dataset.track;
+          const trackId = entry.target.dataset.track;
 
         const start =
   entry.target.dataset.start
     ? Number(entry.target.dataset.start)
     : 0;
+
+    
 
        if (trackId === currentTrack)
   return;
@@ -273,19 +359,17 @@ fadeToTrack(trackId,start);
 
       });
 
-    },
-
-    {
+    }, {
       threshold: 0.6
-    }
-
-  );
+    });
 
 sections.forEach((section) => {
   observer.observe(section);
 });
-      }
-	  
+      },
+	  onStateChange: () => {
+    syncPlayButton();
+  }
     }
   });
 
@@ -357,6 +441,20 @@ function fadeIn() {
     }, 80);
 
 }
+
+
+
+btn?.addEventListener("click", () => {
+  const state = player.getPlayerState();
+
+  if (state === YT.PlayerState.PLAYING) {
+    player.pauseVideo();
+  } else {
+    player.playVideo();
+  }
+
+  syncPlayButton();
+});
 </script>
 	</body>
 </html>
