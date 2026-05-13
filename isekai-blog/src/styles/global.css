@@ -222,14 +222,14 @@ hr {
   background: var(--header-bg);
   box-shadow: var(--box-shadow);
   border-radius: 16px;
-  padding: 0.5rem 1rem;;
+  padding: 0 1rem;;
 
   scrollbar-width: thin;
 
 }
 .toc summary {
   list-style: none;
-  padding: 0.2rem 0;
+  padding: 0.8rem 0;
 
   display: flex;
   align-items: center;
@@ -322,7 +322,7 @@ hr {
 .toc ul {
   list-style: none;
   padding-left: 0;
-  margin: 0;
+  margin: 0 0 0.8rem 0;
 }
 
 
