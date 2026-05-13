@@ -303,7 +303,9 @@ let btn;
         {
           if (!player || !btn) return;
           const state = player.getPlayerState();
-          btn.classList.toggle("playing",state === YT.PlayerState.PLAYING);
+          const isPlaying = state === YT.PlayerState.PLAYING;
+          
+          btn.classList.toggle("playing", isPlaying);
         }
  
 
