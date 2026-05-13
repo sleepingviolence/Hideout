@@ -45,7 +45,7 @@ position: sticky;
   z-index: 1000;
 
 		margin: 0;
-    height: var(--header-height);
+    min-height: var(--header-height);
 		padding: 0 1em;
 		
 		box-shadow: 0 2px 8px rgba(var(--black), 5%);
@@ -58,6 +58,8 @@ position: sticky;
 	h2 {
 		margin: 0;
 		font-size: 1em;
+    flex-shrink: 1;
+    min-width: 0;
 	}
 
 	h2 a,
@@ -98,6 +100,7 @@ position: sticky;
 
 		nav {
     padding: 0.4rem 0;
+    flex-wrap: nowrap;
   }
 
   .internal-links {
@@ -127,6 +130,7 @@ position: sticky;
   padding: 0.3em 0.7em;
   cursor: pointer;
   transition: all 0.2s;
+  flex-shrink: 0;
 }
 
 .theme-btn:hover {
