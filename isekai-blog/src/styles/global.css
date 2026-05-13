@@ -339,7 +339,8 @@ iframe {
     height: auto;
   }
   .layout {
-	display: block;
+	display: flex;
+  flex-direction: column;
   }
 
   #player {
@@ -350,8 +351,10 @@ iframe {
     position: static;
 	width: 100%;
     margin: 1rem 0;
+    order: 2;
   }
   .content {
     width: 100%;
+    order: 1;
   }
 }
