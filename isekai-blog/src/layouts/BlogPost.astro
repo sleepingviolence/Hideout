@@ -302,6 +302,7 @@ let btn;
         function updateUI() 
         {
           if (!player || !btn) return;
+          const state = player.getPlayerState();
           const isPlaying = state === YT.PlayerState.PLAYING;
           
           btn.classList.toggle("playing", isPlaying);
@@ -345,6 +346,8 @@ window.onYouTubeIframeAPIReady = () => {
           if (state === YT.PlayerState.PLAYING) {player.pauseVideo();} 
           
           else {player.playVideo();}
+
+          setTimeout(updateUI, 100);
         });
 
   
