@@ -293,6 +293,15 @@ hr {
   transition: 0.2s;
 }
 
+.toc a.active {
+  color: var(--accent);
+  font-weight: 700;
+  
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
 .toc a:hover {
   transform: translateX(4px);
 }
