@@ -229,7 +229,7 @@ hr {
 }
 .toc summary {
   list-style: none;
-  padding: 0.8rem 0;
+  padding: 0.95rem 0 0.7rem 0;
 
   display: flex;
   align-items: center;
@@ -394,7 +394,8 @@ iframe {
 
   .toc {
     position: sticky;
-    top: 8px;
+    top: calc(
+      var(--header-height) + 8px);
 
     z-index: 100;
 	  width: 100%;
@@ -402,6 +403,10 @@ iframe {
 
     max-height: none;
     overflow: visible;
+  }
+
+  body.header-hidden .toc {
+    top: 8px;
   }
 
   .toc[open] .toc-body {
