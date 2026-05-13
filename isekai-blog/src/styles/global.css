@@ -5,8 +5,10 @@
  */
 
 :root {
-	--accent: #2337ff;
-	--accent-dark: #000d8a;
+
+  --header-height: 72px;
+	--accent: #64748b;
+	--accent-dark: #475569;
 	--black: 15, 18, 25;
 	--gray: 96, 115, 159;
 	--gray-light: 229, 233, 240;
@@ -20,6 +22,8 @@
   --text: rgb(var(--gray-dark));
 	 --header-bg: #ffffff;
   --header-text: rgb(var(--black));
+
+  
 
 }
 :root[data-theme="dark"] {
@@ -314,6 +318,9 @@ iframe {
 }
 
 @media (max-width: 720px) {
+  :root {
+  --header-height: 56px;
+} 
 	body {
 		font-size: 16px;
 	}
