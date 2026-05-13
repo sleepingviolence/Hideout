@@ -229,24 +229,36 @@ hr {
 }
 .toc summary {
   list-style: none;
+
+  display: flex;
+  align-items: center;
+
+  gap: 0.5rem;
+
+  margin: 0;
+  padding: 0;
+
+  font-size: 1rem;
 }
 
 .toc summary::-webkit-details-marker {
   display: none;
 }
 
-.toc[open] summary::before {
-  content: "✕";
-}
-
 .toc summary::before {
   content: "☰";
 
-  margin-right: 0.5rem;
-
-  font-size: 1.2rem;
+  font-size: 1rem;
 
   display: inline-block;
+
+  line-height: 1;
+
+  flex-shrink: 0;
+}
+
+.toc[open] summary::before {
+  content: "✕";
 }
 
 .toc-body {
