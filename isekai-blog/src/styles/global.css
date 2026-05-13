@@ -227,6 +227,23 @@ hr {
   scrollbar-width: thin;
 
 }
+.toc summary {
+  list-style: none;
+}
+
+.toc summary::-webkit-details-marker {
+  display: none;
+}
+
+.toc summary::before {
+  content: "☰";
+
+  margin-right: 0.5rem;
+
+  font-size: 1.2rem;
+
+  display: inline-block;
+}
 
 .toc-body {
   max-height: calc(100vh - 120px);
@@ -370,12 +387,16 @@ iframe {
     overflow: visible;
   }
 
-  .toc[open] ul::-webkit-scrollbar {
-    display: none;
+  .toc[open] .toc-body {
+    max-height: 40vh;
+    overflow-y: auto;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 
-  .toc[open] ul {
-    scrollbar-width: none;
+  .toc[open] .toc-body::-webkit-scrollbar {
+    display: none;
   }
 
   .content {
