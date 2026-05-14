@@ -99,16 +99,29 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
   z-index: 1000;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+
+  overflow: visible;
 }
 
 .floating-btn.playing::after {
   content: "";
+
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
   border-radius: 50%;
+
   background: var(--accent);
+
   opacity: 0.5;
+
   animation: pulse 1.2s ease-out infinite;
+
+  pointer-events: none;
 }
 
 @keyframes pulse {
@@ -203,8 +216,6 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
   youtubeTrack && (
   <button id="miniPlayBtn" class="floating-btn">▶</button>
 )}
-
-</Footer>
 
 <script is:inline>
 window.addEventListener("DOMContentLoaded", () => {
