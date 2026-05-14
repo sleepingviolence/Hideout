@@ -307,18 +307,11 @@ window.addEventListener("DOMContentLoaded", () => {
 if (!youtubeTrack) return;
 let currentTrack = "";
 let btn;
-let player;
 
 
 
-        function updateUI() 
-        {
-          if (!player || !btn) return;
-          const state = player.getPlayerState();
-          const isPlaying = state === YT.PlayerState.PLAYING;
-          
-          btn.classList.toggle("playing", isPlaying);
-        }
+
+        
  
 
 window.onYouTubeIframeAPIReady = () => {
@@ -343,7 +336,7 @@ window.onYouTubeIframeAPIReady = () => {
 
         btn = document.getElementById("miniPlayBtn");
 
-        updateUI();
+       
 
         console.log("player ready");
 
@@ -359,7 +352,7 @@ window.onYouTubeIframeAPIReady = () => {
           
           else {player.playVideo();}
 
-          setTimeout(updateUI, 100);
+          btn.style.display = "none";
         });
 
   
@@ -401,7 +394,7 @@ sections.forEach((section) => {
   observer.observe(section);
 });
 }
-    }, onStateChange: () => { updateUI(); }
+    }
   });
 
 };
