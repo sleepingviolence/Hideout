@@ -99,6 +99,13 @@ const { subtitle1,title,subtitle2, description, pubDate, updatedDate, heroImage,
   z-index: 1000;
 
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+
+  transition: opacity 0.4s ease;
+}
+
+.floating-btn.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 
@@ -310,7 +317,7 @@ window.onYouTubeIframeAPIReady = () => {
         {
           player.playVideo();
 
-          btn.style.display = "none";
+          btn.classList.add("hidden");
         });
 
   
