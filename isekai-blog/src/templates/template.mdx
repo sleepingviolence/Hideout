@@ -1,0 +1,35 @@
+---
+subtitle1: ""
+title: ""
+subtitle2: ""
+description: ""
+pubDate: 2026--
+heroImage: "../../assets/name.jpg"
+
+youtubeTrack: "コード"
+---
+import ImageCaption from '../../components/ImageCaption.astro';
+
+//画像
+<ImageCaption
+  src="/file1/file2/name"
+  caption=""
+/>
+
+//引用
+> 　引用文<br />(引用サイト)
+
+//youtube 再生
+<section data-track="コード"
+data-start="開始秒"
+>
+
+//twitter
+<blockquote class="twitter-tweet">
+  <a href="https://x.com/isekaijoucho/status/1718256229041193249?s=20"></a>
+</blockquote>
+<script async src="https://platform.twitter.com/widgets.js"></script>
+
+//youtube埋め込み
+<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/UKZt1vq8bKI?si=XkbraXEZaaHemdpR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+正味毎回取ってくればいいと思うけど、lazyだけ忘れないように

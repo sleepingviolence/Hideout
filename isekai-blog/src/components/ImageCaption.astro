@@ -1,0 +1,127 @@
+---
+const {
+  src,
+  alt = "",
+  caption = "",
+  areas = []
+} = Astro.props;
+---
+
+<figure class="article-image">
+
+<div class="image-wrap">
+
+  <img
+    src={src}
+    alt={alt}
+  />
+
+   {
+      areas.map((area) => (
+        <a
+          class="area"
+          href={area.href}
+          style={{
+  left: `${area.x}%`,
+  top: `${area.y}%`,
+  width: `${area.w}%`,
+  height: `${area.h}%`,
+}}
+        >
+          <div class="tooltip">
+            {area.text}
+          </div>
+        </a>
+      ))
+    }
+
+  </div>
+
+
+  {
+    caption && (
+      <figcaption>
+        {caption}
+      </figcaption>
+    )
+  }
+
+</figure>
+
+<style>
+  .article-image {
+    text-align: center;
+    margin: 2rem auto;
+  }
+
+  .article-image img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .article-image figcaption {
+    margin-top: 10px;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+
+  .image-wrap {
+  position: relative;
+  display: inline-block;
+}
+
+.image-wrap img {
+  display: block;
+  max-width: 100%;
+}
+
+.area {
+  cursor: pointer;
+  position: absolute;
+
+  border: 2px solid #ff4d4d;
+  background: rgba(255,77,77,0.2);
+
+  transition: 0.2s;
+}
+
+.area:hover {
+  background: rgba(255,77,77,0.35);
+}
+
+.tooltip {
+  position: absolute;
+  z-index: 10;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(0,0,0,0.85);
+  color: white;
+
+  padding: 8px 12px;
+  border-radius: 10px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: 0.2s;
+
+  white-space: nowrap;
+}
+
+.area:hover .tooltip {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .area:active .tooltip {
+    opacity: 1;
+  }
+}
+</style>
+

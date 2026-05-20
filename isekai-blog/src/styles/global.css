@@ -331,6 +331,10 @@ hr {
 		padding: 1em;
 		}
 
+.prose [id] {
+  scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
 
 .content {
   min-width: 0;
